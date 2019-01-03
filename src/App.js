@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import Draggable from './Draggable';
+import Droppable from './Droppable';
+
+import { AppContainer } from './styled';
 
 class App extends Component {
   state = {
@@ -50,21 +53,21 @@ class App extends Component {
     });
 
     return (
-      <div className="container-drag">
+      <AppContainer className="container-drag">
         <h2 className="header">DRAG & DROP DEMO</h2>
-        <div className="wip"
-          onDragOver={(e)=>this.onDragOver(e)}
-          onDrop={(e)=>{this.onDrop(e, "wip")}}>
-          <span className="task-header">WIP</span>
+        <Droppable groupName="wip"
+          onDragOver={this.onDragOver}
+          onDrop={this.onDrop}>
+          <span>WIP</span>
           {tasks.wip}
-        </div>
+        </Droppable>
         <div className="droppable"
           onDragOver={(e)=>this.onDragOver(e)}
           onDrop={(e)=>this.onDrop(e, "complete")}>
           <span className="task-header">COMPLETED</span>
           {tasks.complete}
         </div>
-      </div>
+      </AppContainer>
     );
   }
 }
