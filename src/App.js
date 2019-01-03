@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Draggable from './Draggable';
 import Droppable from './Droppable';
 
 import { AppContainer } from './styled';
 
-class App extends Component {
+class App extends React.Component {
   state = {
     tasks: [
       {name:"Learn Angular",category:"wip", bgcolor: "yellow"},

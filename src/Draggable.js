@@ -1,4 +1,5 @@
 import React from 'react';
+import { DraggableWrapper } from './styled';
 
 class Draggable extends React.Component {
   onDragStart(e) {
@@ -8,14 +9,13 @@ class Draggable extends React.Component {
   render() {
     const { name, bgcolor } = this.props;
     return (
-      <div
+      <DraggableWrapper
         onDragStart={this.onDragStart.bind(this)}
-        draggable
-        className="draggable"
-        style = {{backgroundColor: bgcolor}}
+        draggable="true"
+        bgcolor={bgcolor}
       >
         {name}
-      </div>
+      </DraggableWrapper>
     );
   }
 }
