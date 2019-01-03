@@ -3,14 +3,15 @@ import React from 'react';
 import Draggable from './Draggable';
 import Droppable from './Droppable';
 
-import { AppContainer } from './styled';
+import { AppContainer, WordWrapper } from './styled';
 
 class App extends React.Component {
   state = {
     tasks: [
-      {name:"Learn Angular",category:"wip", bgcolor: "yellow"},
-      {name:"React", category:"wip", bgcolor:"pink"},
-      {name:"Vue", category:"complete", bgcolor:"skyblue"}
+      {name:"Learn Angular",category:"wip", bgcolor: "white"},
+      {name:"", category:"wip", bgcolor:"white"},
+      {name:"React", category:"wip", bgcolor:"white"},
+      {name:"Vue", category:"complete", bgcolor:"green"}
     ]
   }
 
@@ -59,14 +60,18 @@ class App extends React.Component {
           onDragOver={this.onDragOver}
           onDrop={this.onDrop}>
           <span>WIP</span>
-          {tasks.wip}
+          <WordWrapper>
+            {tasks.wip}
+          </WordWrapper>
         </Droppable>
-        <div className="droppable"
+        <Droppable groupName="droppable"
           onDragOver={(e)=>this.onDragOver(e)}
           onDrop={(e)=>this.onDrop(e, "complete")}>
           <span className="task-header">COMPLETED</span>
-          {tasks.complete}
-        </div>
+          <WordWrapper>
+            {tasks.complete}
+          </WordWrapper>
+        </Droppable>
       </AppContainer>
     );
   }
